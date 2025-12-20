@@ -1,4 +1,3 @@
-
 -- CREATE ROLE student_role;
 -- CREATE ROLE instructor_role;
 -- CREATE ROLE registrar_role;
@@ -19,6 +18,8 @@ USING (
     student_id = current_setting('app.student_id')
 );
 
+-- ######################################################################
+-- Student - course view
 
 CREATE OR REPLACE VIEW v_student_courses AS
 SELECT
@@ -38,6 +39,7 @@ LEFT JOIN grade g
 
 GRANT SELECT ON v_student_courses TO student_role;
 
+-- ######################################################################
 
 -- Instructor View
 
@@ -68,7 +70,6 @@ LEFT JOIN enrollment e ON cs.section_id = e.section_id
 LEFT JOIN student s ON e.student_id = s.student_id
 LEFT JOIN grade g ON g.enrollment_id = e.enrollment_id;
 
--- Example: set current user
 SET app.staff_id = 'ST003';
 
 -- Select only this instructor's sections
@@ -76,9 +77,9 @@ SELECT *
 FROM v_instructor_sections
 WHERE instructor_id = current_setting('app.staff_id');
 
-
 GRANT SELECT, UPDATE (grade) ON v_instructor_sections TO instructor_role;
 
+-- ######################################################################
 
 -- Register View
 
@@ -103,4 +104,5 @@ LEFT JOIN grade g ON g.enrollment_id = e.enrollment_id;
 
 -- Grant SELECT to registrar
 GRANT SELECT ON v_registrar_transcripts TO registrar_role;
+
 
