@@ -1,0 +1,15 @@
+streamlit==1.51.0
+pandas==2.2.3
+numpy==1.26.4
+psycopg2==2.9.11
+openpyxl==3.0.10
+python-dotenv==1.1.1
+plotly==5.21.0
+scikit-learn==1.7.2
+matplotlib==3.7.2
+seaborn==0.12.2
+hvplot==0.9.3
+fastapi==0.116.1
+uvicorn==0.35.0
+sqlalchemy==2.0.21
+pydantic==2.4.0
