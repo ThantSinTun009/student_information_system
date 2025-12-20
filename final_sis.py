@@ -3,14 +3,6 @@ import pandas as pd
 import psycopg2
 import os
 
-import psycopg2
-conn = psycopg2.connect(
-    host=st.secrets["DB_HOST"],
-    database=st.secrets["DB_NAME"],
-    user=st.secrets["DB_USER"],
-    password=st.secrets["DB_PASSWORD"]
-)
-
 # --------------------------------------------------
 # Page configuration
 # --------------------------------------------------
@@ -303,4 +295,5 @@ else:
 
             except Exception as e:
                 st.error(f"Error: {e}")
+
 
