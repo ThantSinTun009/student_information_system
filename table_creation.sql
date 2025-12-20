@@ -1,5 +1,3 @@
-
-
 -- Department
 CREATE TABLE Department (
     department_id VARCHAR(4) PRIMARY KEY CHECK (department_id ~ '^D[0-9]{3}$'),
@@ -40,8 +38,6 @@ CREATE TABLE Student (
         ON DELETE SET NULL
 );
 
-
-
 -- Staff
 CREATE TABLE Staff (
     staff_id VARCHAR(5) PRIMARY KEY 
@@ -60,8 +56,6 @@ CHECK (role IN ('Academics', 'Administration')),
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 );
-
-
 
 -- Course
 CREATE TABLE Course (
@@ -145,6 +139,7 @@ CONSTRAINT fk_mcr_course
 	FOREIGN KEY (course_id)
 	REFERENCES Course(course_id)
 );
+
 
 
 
