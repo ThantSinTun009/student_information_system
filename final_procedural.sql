@@ -27,7 +27,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- ################################################
+-- ###########################################################################
 
 -- instructor : enter grade
 CREATE OR REPLACE FUNCTION enter_grade(
@@ -55,7 +55,7 @@ BEGIN
 END;
 $$;
 
--- ################################################
+-- ###########################################################################
 
 -- registrar
 CREATE OR REPLACE FUNCTION add_enrollment(
@@ -72,7 +72,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- ################################################
+-- ###########################################################################
 
 CREATE OR REPLACE FUNCTION check_graduation_requirements(p_student_id VARCHAR(4))
 RETURNS TABLE (
@@ -426,6 +426,9 @@ v_total_credits_needed := GREATEST(0, v_total_credits_required - v_total_credits
     RETURN;
 END;
 $$;
+
+-- ###########################################################################
+
 
 
 
