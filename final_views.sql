@@ -18,7 +18,6 @@ USING (
     student_id = current_setting('app.student_id')
 );
 
--- ######################################################################
 -- Student - course view
 
 CREATE OR REPLACE VIEW v_student_courses AS
@@ -104,5 +103,6 @@ LEFT JOIN grade g ON g.enrollment_id = e.enrollment_id;
 
 -- Grant SELECT to registrar
 GRANT SELECT ON v_registrar_transcripts TO registrar_role;
+
 
 
