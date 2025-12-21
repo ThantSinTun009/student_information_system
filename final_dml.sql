@@ -53,3 +53,30 @@ ORDER BY
     d.department_name;
 
 -- ##############################################
+
+-- 4). Enroll student
+INSERT INTO Enrollment (enrollment_id, student_id, section_id, enrollment_status)
+VALUES ('E200', 'S101', 'CS043', 'enrolled');
+
+-- Check if enrollment is completed
+SELECT e.enrollment_id, s.name AS student_name, cs.section_id, c.course_name, e.enrollment_status
+FROM Enrollment e
+JOIN Student s ON e.student_id = s.student_id
+JOIN Course_Section cs ON e.section_id = cs.section_id
+JOIN Course c ON cs.course_id = c.course_id
+WHERE e.enrollment_id = 'E200';
+
+-- ##############################################
+
+-- 5). Update a student's status if he/she suspended
+UPDATE Student
+SET status = 'suspended'
+WHERE student_id = 'S050';
+
+-- Verify status along with current enrollments
+SELECT s.student_id, s.name, s.status, c.course_name, cs.semester
+FROM Student s
+LEFT JOIN Enrollment e ON s.student_id = e.student_id
+LEFT JOIN Course_Section cs ON e.section_id = cs.section_id
+LEFT JOIN Course c ON cs.course_id = c.course_id
+WHERE s.student_id = 'S050';
